@@ -219,3 +219,4 @@ __marimo__/
 
 # epicsync runtime data (browser profile, session, progress)
 data/
+/.idea/
