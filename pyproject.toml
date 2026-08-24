@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gfn-epicgames-sync"
+version = "1.0.0"
+description = "Bulk-mark your Epic Games Store library as owned on GeForce NOW."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-or-later" }
+keywords = ["geforce-now", "epic-games", "cloud-gaming", "automation", "playwright"]
+authors = [{ name = "mustafaer" }]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Games/Entertainment",
+  "Topic :: Utilities",
+]
+
+dependencies = [
+  "legendary-gl>=0.20.30",
+  "playwright>=1.40",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/mustafaer/gfn-epicgames-sync"
+Issues = "https://github.com/mustafaer/gfn-epicgames-sync/issues"
+
+[project.scripts]
+epicsync = "epicsync.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["epicsync*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "RUF"]
+# Probing an undocumented UI means attempting a selector and moving on when it
+# is not there; broad excepts are deliberate and confined to those call sites.
+ignore = ["B904"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# epicsync runtime data (browser profile, session, progress)
+data/
